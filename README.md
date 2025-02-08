@@ -1,6 +1,6 @@
 # OpenAi Embeddings & Vector Databases
 
-This project explores AI embeddings using OpenAI’s ```text-embedding-3-large``` model and stores them in a PostgreSQL database with ```pgvector```.
+This project explores AI embeddings using OpenAI’s ```text-embedding-3-large``` model and stores them in a ```PostgreSQL``` database with the ```pgvector``` extension.
 
 <h2>What are AI Embeddings?</h2>
 
