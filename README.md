@@ -8,5 +8,5 @@ AI embeddings are numerical representations of text that capture meaning and rel
 Model: ```text-embedding-3-large```
 This is a powerful embedding model from OpenAI that converts text into high-dimensional vectors. It improves upon previous versions with better efficiency and accuracy in capturing semantic meaning.
 
-Vector Databases & ```pgvector``` for ```PostgreSQL```
+<h2>Vector Databases & ```pgvector``` for ```PostgreSQL```</h2>
 A vector database stores embeddings so that similar text can be quickly retrieved using mathematical similarity (e.g., cosine similarity). ```pgvector``` is an extension for PostgreSQL that enables vector search, allowing AI-powered queries directly within a relational database.
