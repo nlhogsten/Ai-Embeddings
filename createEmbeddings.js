@@ -29,22 +29,22 @@ async function generateEmbeddings() {
     /*
     Create Table in Supabase database:
       CREATE TABLE naics_embeddings (
-        code TEXT PRIMARY KEY,
+        name TEXT PRIMARY KEY,
         description TEXT NOT NULL,  -- Description is required
         keywords TEXT[] NOT NULL,     -- Keywords are required (even if empty array)
         embedding VECTOR(3072) NOT NULL -- Embedding is required
       );
     */
     const embeddingData = {
-      column01: entry.name,
-      column02: entry.description,
-      column03: entry.keywords,
-      column04: response.data[0].embedding, //
+      name: entry.name,
+      description: entry.description,
+      keywords: entry.keywords,
+      embeddibng: response.data[0].embedding, //
     };
 
     embeddings.push(embeddingData);
 
-    // Insert into Supabase
+    // Insert into Supabase database
     const { error } = await supabase.from("sample_table").insert(embeddingData);
 
     if (error) {
