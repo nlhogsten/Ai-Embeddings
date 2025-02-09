@@ -11,13 +11,13 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
 
 // Load NAICS data
-const naicsData = JSON.parse(fs.readFileSync("./sample.json", "utf8"));
+const jsonData = JSON.parse(fs.readFileSync("./sample.json", "utf8"));
 
 // Function to generate embeddings and insert into Supabase
 async function generateEmbeddings() {
   const embeddings = [];
 
-  for (const entry of naicsData) {
+  for (const entry of jsonData) {
 
     const text = `${entry.description} - Keywords: ${entry.keywords.join(", ")}`;
     
@@ -26,11 +26,20 @@ async function generateEmbeddings() {
       input: text,
     });
 
+    /*
+    Create Table in Supabase database:
+      CREATE TABLE naics_embeddings (
+        code TEXT PRIMARY KEY,
+        description TEXT NOT NULL,  -- Description is required
+        keywords TEXT[] NOT NULL,     -- Keywords are required (even if empty array)
+        embedding VECTOR(3072) NOT NULL -- Embedding is required
+      );
+    */
     const embeddingData = {
-      column01: entry.code,
+      column01: entry.name,
       column02: entry.description,
       column03: entry.keywords,
-      column04: response.data[0].embedding,
+      column04: response.data[0].embedding, //
     };
 
     embeddings.push(embeddingData);
