@@ -1,0 +1,4 @@
+[
+    { "name": "Baseball", "description": "Ball Sport", "keywords": ["catch", "throw", "hit", "slide", "field"] },
+    { "name": "Snowboarding", "description": "Snow Sport", "keywords": ["carve", "flip", "ramp", "snow", "slope"] }
+]
